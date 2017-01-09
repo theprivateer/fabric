@@ -1,7 +1,20 @@
 {
   "name": "theprivateer/fabric",
   "description": "Fabric CMS base framework",
-  "version": "dev-master",
+
+  "authors" : [{
+    "name" : "Phil Stephens",
+    "email" : "emailtheprivateer@gmail.com"
+  }
+  ],
+  "keywords" : [
+    "CMS", "Laravel"
+  ],
+  "homepage" : "https://github.com/theprivateer/fabric",
+  "license" : [
+    "MIT"
+  ],
+
   "require": {
     "php": ">=5.6.4",
     "theprivateer/eloquent-uuid": "^0.1.0",
