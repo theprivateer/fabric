@@ -1,0 +1,20 @@
+.image-preview
+{
+  background-repeat: no-repeat;
+  background-position: 50%;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+
+.image-preview .dropzone
+{
+  background: transparent !important;
+  min-height: 250px !important;
+}
+
+.image-preview .dz-preview
+{
+  background: transparent !important;
+}

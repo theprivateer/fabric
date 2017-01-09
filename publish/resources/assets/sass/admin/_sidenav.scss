@@ -1,0 +1,133 @@
+.row-offcanvas
+{
+  padding-top: 65px;
+}
+
+/*
+ * Off Canvas
+ * --------------------------------------------------
+ */
+@media screen and (max-width: 767px) {
+  .row-offcanvas {
+    position: relative;
+    min-height: 100vh;
+    -webkit-transition: all .25s ease-out;
+    -o-transition: all .25s ease-out;
+    transition: all .25s ease-out;
+  }
+
+  .row-offcanvas-right {
+    right: 0;
+  }
+
+  .row-offcanvas-left {
+    left: 0;
+  }
+
+  .row-offcanvas-right
+  .sidebar-offcanvas {
+    right: -50%; /* 6 columns */
+  }
+
+  .row-offcanvas-left
+  .sidebar-offcanvas {
+    left: -50%; /* 6 columns */
+  }
+
+  .row-offcanvas-right.active {
+    right: 50%; /* 6 columns */
+  }
+
+  .row-offcanvas-left.active {
+    left: 50%; /* 6 columns */
+  }
+
+  .sidebar-offcanvas {
+    position: absolute;
+
+    .sidenav
+    {
+      margin-left: $grid-gutter-width / 2;
+    }
+  }
+
+
+  .navbar-toggle {
+    position: relative;
+    float: left;
+    margin-left: 15px;
+    margin-right: 0;
+  }
+}
+
+.sidebar
+{
+  position: fixed;
+  z-index: 999;
+  top: 50px;
+  left: 0;
+  bottom: 0;
+  background: #2d3037;
+  color: #ccc;
+  @extend .col-md-2;
+  @extend .col-sm-3;
+}
+
+ul.sidenav
+{
+  list-style-type: none;
+  margin: 0 (-$grid-gutter-width / 2) 0;
+  padding: 0;
+
+  >li
+  {
+    border-bottom: solid 1px #43454b;
+
+    >a
+    {
+      display: block;
+      position: relative;
+      padding: $grid-gutter-width / 2;
+      padding-left: $grid-gutter-width - 5px;
+      color: #f8f8f8;
+
+      &:hover
+      {
+        text-decoration: none;
+        background: #000000;
+        padding-left: $grid-gutter-width - 10px - 5px;
+        border-left: solid 10px $brand-primary;
+      }
+
+      .badge
+      {
+        position: absolute;
+        top: $grid-gutter-width / 2;
+        right: $grid-gutter-width / 2;
+      }
+
+      i
+      {
+        margin-right: 5px;
+      }
+    }
+
+    ul.dropdown-menu
+    {
+      top: 0;
+      left: 100%;
+      border-top-left-radius: 0;
+      border-bottom-left-radius: 0;
+    }
+
+    &.active
+    {
+      >a
+      {
+        background: #000;
+        padding-left: $grid-gutter-width - 10px - 5px;
+        border-left: solid 10px $brand-primary;
+      }
+    }
+  }
+}

@@ -1,0 +1,33 @@
+html,
+body {
+  overflow-x: hidden; /* Prevent scroll on narrow devices */
+}
+
+.main
+{
+  @extend .container-fluid;
+}
+
+.page-body
+{
+  @extend .col-md-10;
+  @extend .col-md-offset-2;
+  @extend .col-sm-9;
+  @extend .col-sm-offset-3;
+}
+
+.badge
+{
+  background: $brand-primary;
+  font-weight: 300;
+
+  .error
+  {
+    background: $brand-danger;
+  }
+}
+
+label
+{
+  font-weight: normal;
+}

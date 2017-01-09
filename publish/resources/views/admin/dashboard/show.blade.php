@@ -1,0 +1,1 @@
+@extends('fabric::admin.layouts.default')
