@@ -28,10 +28,13 @@ Route::group(['namespace' => 'Privateer\Fabric\Http\Controllers', 'middleware' =
         // Admin
         Route::group(['namespace' => 'Admin', 'middleware' => config('fabric.auth-middleware', 'auth')], function () {
 
-            Route::get('/', [
-                'uses'  => 'DashboardController@show',
-                'as'    => 'home'
-            ]);
+            if( ! Route::has('home'))
+            {
+                Route::get('/', [
+                    'uses'  => 'DashboardController@show',
+                    'as'    => 'home'
+                ]);
+            }
 
             Route::get('/home', function() {
                 return redirect()->route('home');
