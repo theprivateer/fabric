@@ -2,7 +2,7 @@
 
 return [
 
-    'admin-prefix' => '.admin',
+    'admin-prefix' => '.fabric',
 
     'upload-prefix' => 'uploads',
 
