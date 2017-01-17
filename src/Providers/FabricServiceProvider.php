@@ -34,6 +34,8 @@ class FabricServiceProvider extends ServiceProvider
             __DIR__ . '/../../publish/config/fabric.php' => config_path('fabric.php'),
             __DIR__ . '/../../publish/config/laravel-missing-page-redirector.php' => config_path('laravel-missing-page-redirector.php')
         ], 'config');
+
+        $this->mergeConfigFrom(__DIR__ . '/../../publish/config/fabric.php', 'fabric');
     }
 
     /**

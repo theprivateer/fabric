@@ -23,10 +23,10 @@ Route::group(['namespace' => 'Privateer\Fabric\Http\Controllers', 'middleware' =
     /*
      * Admin Routes
      */
-    Route::group(['prefix' => config('fabric.admin-prefix', '.admin')], function () {
+    Route::group(['prefix' => config('fabric.admin-prefix')], function () {
 
         // Admin
-        Route::group(['namespace' => 'Admin', 'middleware' => config('fabric.auth-middleware', 'auth')], function () {
+        Route::group(['namespace' => 'Admin', 'middleware' => config('fabric.auth-middleware')], function () {
 
             if( ! Route::has('home'))
             {
