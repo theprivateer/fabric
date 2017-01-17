@@ -3,11 +3,12 @@
 namespace Privateer\Fabric\Sites\Navigation;
 
 use Illuminate\Database\Eloquent\Model;
+use Privateer\Fabric\ConnectionTrait;
 use Privateer\Uuid\EloquentUuid;
 
 class Item extends Model
 {
-    use EloquentUuid;
+    use EloquentUuid, ConnectionTrait;
 
     protected $guarded = [];
 

@@ -4,6 +4,7 @@ namespace Privateer\Fabric\Articles;
 
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Model;
+use Privateer\Fabric\ConnectionTrait;
 use Privateer\Fabric\Sites\Content;
 use Privateer\Fabric\Sites\HasContent;
 use Privateer\Fabric\Sites\HasMeta;
@@ -16,7 +17,7 @@ use Spatie\Sluggable\SlugOptions;
 
 class Article extends Model
 {
-    use EloquentUuid, HasSlug, HasContent, HasMeta;
+    use EloquentUuid, HasSlug, HasContent, HasMeta, ConnectionTrait;
 
     protected $guarded = [];
 

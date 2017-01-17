@@ -2,6 +2,7 @@
 
 namespace Privateer\Fabric\Sites\Navigation;
 
+use Privateer\Fabric\ConnectionTrait;
 use Privateer\Fabric\Sites\Page;
 use Privateer\Fabric\Sites\Site;
 use Illuminate\Database\Eloquent\Model;
@@ -11,7 +12,7 @@ use Spatie\Sluggable\SlugOptions;
 
 class Index extends Model
 {
-    use EloquentUuid, HasSlug;
+    use EloquentUuid, HasSlug, ConnectionTrait;
 
     protected $guarded = [];
 

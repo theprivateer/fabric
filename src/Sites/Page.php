@@ -3,13 +3,14 @@
 namespace Privateer\Fabric\Sites;
 
 use Illuminate\Database\Eloquent\Model;
+use Privateer\Fabric\ConnectionTrait;
 use Privateer\Uuid\EloquentUuid;
 use Spatie\Sluggable\HasSlug;
 use Spatie\Sluggable\SlugOptions;
 
 class Page extends Model
 {
-    use EloquentUuid, HasSlug, HasContent;
+    use EloquentUuid, HasSlug, HasContent, ConnectionTrait;
 
     protected $guarded = [];
 

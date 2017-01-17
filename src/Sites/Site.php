@@ -4,6 +4,7 @@ namespace Privateer\Fabric\Sites;
 
 use Illuminate\Support\Facades\DB;
 use Privateer\Fabric\Articles\Article;
+use Privateer\Fabric\ConnectionTrait;
 use Privateer\Fabric\Sites\Navigation\Index;
 use Privateer\Fabric\Uploads\Image;
 use Illuminate\Database\Eloquent\Model;
@@ -11,7 +12,7 @@ use Privateer\Uuid\EloquentUuid;
 
 class Site extends Model
 {
-    use EloquentUuid;
+    use EloquentUuid, ConnectionTrait;
 
     protected $guarded = [];
 

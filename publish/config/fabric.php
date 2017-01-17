@@ -10,7 +10,9 @@ return [
 
     'sitemap' => '\Privateer\Fabric\Http\Controllers\SitemapController@show',
 
-    'auth-middleware'   => 'auth', // default
+    'auth-middleware'   => 'auth', // default - use NullAuth to block backend
+
+    //'database-connection' => 'fabric',
 
     'processor' => 'glide', // 'default
 
