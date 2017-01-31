@@ -1,23 +1,27 @@
 <?php
 
 Route::group(['namespace' => 'Privateer\Fabric\Http\Controllers', 'middleware' => ['web']], function() {
-    /*
-    * Homepage
-    */
-    Route::get('/', 'PageController@index');
 
-    /*
-     * Sitemap
-     */
-    Route::get('sitemap.xml', config('fabric.sitemap'));
-
-    /*
-     * Feed
-     */
-    if( ! Illuminate\Support\Facades\App::runningInConsole())
+    if( ! config('fabric.backend-only', false))
     {
-        Route::get(site('feed')->url . '/{url}', 'ArticleController@show');
-        Route::get(site('feed')->url, 'ArticleController@index');
+        /*
+        * Homepage
+        */
+        Route::get('/', 'PageController@index');
+
+        /*
+         * Sitemap
+         */
+        Route::get('sitemap.xml', config('fabric.sitemap'));
+
+        /*
+         * Feed
+         */
+        if( ! Illuminate\Support\Facades\App::runningInConsole())
+        {
+            Route::get(site('feed')->url . '/{url}', 'ArticleController@show');
+            Route::get(site('feed')->url, 'ArticleController@index');
+        }
     }
 
     /*
@@ -301,5 +305,5 @@ Route::group(['namespace' => 'Privateer\Fabric\Http\Controllers', 'middleware' =
         'as'   => 'image.src'
     ])->where('path', '.*');
 
-    Route::get('{path}', 'PageController@show')->where('path', '.*');
+    if( ! config('fabric.backend-only', false)) Route::get('{path}', 'PageController@show')->where('path', '.*');
 });

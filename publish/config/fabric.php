@@ -6,6 +6,8 @@ return [
 
     'upload-prefix' => 'uploads',
 
+    'backend-only'  => false,
+
     'site' => \Privateer\Fabric\Sites\Site::class,
 
     'sitemap' => '\Privateer\Fabric\Http\Controllers\SitemapController@show',
