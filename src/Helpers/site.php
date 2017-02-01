@@ -9,12 +9,19 @@ if( ! function_exists('site'))
             $site = app('site');
         } catch( \Exception $e)
         {
-            $class = config('fabric.site');
 
-            $site = $class::first();
+            if( ! config('fabric.allow-null-site'))
+            {
+                $class = config('fabric.site');
 
-            // Set it for future calls
-            \Illuminate\Support\Facades\App::singleton('site', $site);
+                $site = $class::first();
+
+                // Set it for future calls
+                \Illuminate\Support\Facades\App::singleton('site', $site);
+            } else
+            {
+                return null;
+            }
         }
 
         if ( ! is_null($key)) {

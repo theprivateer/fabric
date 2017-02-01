@@ -10,6 +10,8 @@ return [
 
     'site' => \Privateer\Fabric\Sites\Site::class,
 
+    'allow-null-site' => false,
+
     'sitemap' => '\Privateer\Fabric\Http\Controllers\SitemapController@show',
 
     'auth-middleware'   => 'auth', // default - use NullAuth to block backend
