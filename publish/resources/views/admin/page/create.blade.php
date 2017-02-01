@@ -17,11 +17,13 @@
                 {!! Form::text('name', null, ['class' => 'form-control']) !!}
             </div>
 
+            @if( ! empty($templates))
             <!-- Template Form Input -->
             <div class="form-group">
                 {!! Form::label('template', 'Template:') !!}
                 {!! Form::select('template', $templates, 'page', ['class' => 'form-control']) !!}
             </div>
+            @endif
         </div>
     </div>
 

@@ -16,26 +16,33 @@ class PageController extends Controller
 
     private function getTemplates()
     {
-        // List available templates
-        $templates = [];
+        try
+        {
+            // List available templates
+            $templates = [];
 
-        if (site('theme', 'default') != 'default') {
-            $dir = File::allFiles(public_path('themes/' . site('theme') . '/views'));
-        } else {
-            $dir = File::allFiles(base_path('vendor/theprivateer/fabric/publish/resources/views/theme'));
-        }
-
-
-        foreach ($dir as $file) {
-            if (strpos($file->getRelativePathname(), '.blade.php') !== false && strpos($file->getRelativePathname(), '_') !== 0) {
-                $shortname = str_replace('.blade.php', '', $file->getRelativePathname());
-                $templates[$shortname] = ucwords($shortname);
+            if (site('theme', 'default') != 'default') {
+                $dir = File::allFiles(public_path('themes/' . site('theme') . '/views'));
+            } else {
+                $dir = File::allFiles(base_path('vendor/theprivateer/fabric/publish/resources/views/theme'));
             }
+
+
+            foreach ($dir as $file) {
+                if (strpos($file->getRelativePathname(), '.blade.php') !== false && strpos($file->getRelativePathname(), '_') !== 0) {
+                    $shortname = str_replace('.blade.php', '', $file->getRelativePathname());
+                    $templates[$shortname] = ucwords($shortname);
+                }
+            }
+
+            $templates['_raw'] = 'Raw (outputs page excerpt only)';
+
+            return $templates;
+
+        } catch(\Exception $e)
+        {
+            return null;
         }
-
-        $templates['_raw'] = 'Raw (outputs page excerpt only)';
-
-        return $templates;
     }
 
     public function create()
