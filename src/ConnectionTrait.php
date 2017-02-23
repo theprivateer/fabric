@@ -3,6 +3,8 @@
 namespace Privateer\Fabric;
 
 
+use Illuminate\Support\Str;
+
 trait ConnectionTrait
 {
     public function getConnectionName()
