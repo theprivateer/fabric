@@ -13,7 +13,7 @@ class CreateContentsTable extends Migration
      */
     public function up()
     {
-        Schema::create('contents', function (Blueprint $table) {
+        Schema::create(config('fabric.database-prefix') . 'contents', function (Blueprint $table) {
             $table->increments('id');
             $table->uuid('uuid');
             $table->morphs('parent');
@@ -32,6 +32,6 @@ class CreateContentsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('contents');
+        Schema::dropIfExists(config('fabric.database-prefix') . 'contents');
     }
 }

@@ -13,7 +13,7 @@ class CreateSitesTable extends Migration
      */
     public function up()
     {
-        Schema::create('sites', function (Blueprint $table) {
+        Schema::create(config('fabric.database-prefix') . 'sites', function (Blueprint $table) {
             $table->increments('id');
             $table->uuid('uuid');
             $table->string('name');
@@ -31,6 +31,6 @@ class CreateSitesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('sites');
+        Schema::dropIfExists(config('fabric.database-prefix') . 'sites');
     }
 }

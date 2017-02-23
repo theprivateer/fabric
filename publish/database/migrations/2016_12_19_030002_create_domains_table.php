@@ -13,7 +13,7 @@ class CreateDomainsTable extends Migration
      */
     public function up()
     {
-        Schema::create('domains', function (Blueprint $table) {
+        Schema::create(config('fabric.database-prefix') . 'domains', function (Blueprint $table) {
             $table->increments('id');
             $table->uuid('uuid');
             $table->unsignedInteger('site_id');
@@ -30,6 +30,6 @@ class CreateDomainsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('domains');
+        Schema::dropIfExists(config('fabric.database-prefix') . 'domains');
     }
 }

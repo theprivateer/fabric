@@ -18,6 +18,8 @@ return [
 
     //'database-connection' => 'fabric',
 
+    'database-prefix'   => env('FABRIC_DB_PREFIX', ''),
+
     'processor' => 'glide', // 'default
 
     'processors' => [ // 'drivers'

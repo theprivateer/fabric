@@ -13,7 +13,7 @@ class CreateItemsTable extends Migration
      */
     public function up()
     {
-        Schema::create('items', function (Blueprint $table) {
+        Schema::create(config('fabric.database-prefix') . 'items', function (Blueprint $table) {
             $table->increments('id');
             $table->uuid('uuid');
             $table->unsignedInteger('index_id');
@@ -30,6 +30,6 @@ class CreateItemsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('items');
+        Schema::dropIfExists(config('fabric.database-prefix') . 'items');
     }
 }

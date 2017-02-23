@@ -13,7 +13,7 @@ class CreateMetasTable extends Migration
      */
     public function up()
     {
-        Schema::create('metas', function (Blueprint $table) {
+        Schema::create(config('fabric.database-prefix') . 'metas', function (Blueprint $table) {
             $table->increments('id');
             $table->uuid('uuid');
             $table->morphs('parent');
@@ -30,6 +30,6 @@ class CreateMetasTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('metas');
+        Schema::dropIfExists(config('fabric.database-prefix') . 'metas');
     }
 }

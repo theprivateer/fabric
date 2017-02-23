@@ -13,7 +13,7 @@ class CreateRedirectsTable extends Migration
      */
     public function up()
     {
-        Schema::create('redirects', function (Blueprint $table) {
+        Schema::create(config('fabric.database-prefix') . 'redirects', function (Blueprint $table) {
             $table->increments('id');
             $table->uuid('uuid');
             $table->unsignedInteger('site_id');
@@ -30,6 +30,6 @@ class CreateRedirectsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('redirects');
+        Schema::dropIfExists(config('fabric.database-prefix') . 'redirects');
     }
 }

@@ -13,7 +13,7 @@ class CreateIndicesTable extends Migration
      */
     public function up()
     {
-        Schema::create('indices', function (Blueprint $table) {
+        Schema::create(config('fabric.database-prefix') . 'indices', function (Blueprint $table) {
             $table->increments('id');
             $table->uuid('uuid');
             $table->unsignedInteger('site_id');
@@ -30,6 +30,6 @@ class CreateIndicesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('indices');
+        Schema::dropIfExists(config('fabric.database-prefix') . 'indices');
     }
 }

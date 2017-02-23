@@ -17,7 +17,7 @@ Route::group(['namespace' => 'Privateer\Fabric\Http\Controllers', 'middleware' =
         /*
          * Feed
          */
-        if( ! Illuminate\Support\Facades\App::runningInConsole())
+        if( ! Illuminate\Support\Facades\App::runningInConsole() && ! empty(site('feed_id')))
         {
             Route::get(site('feed')->url . '/{url}', 'ArticleController@show');
             Route::get(site('feed')->url, 'ArticleController@index');
