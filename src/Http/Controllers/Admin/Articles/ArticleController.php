@@ -27,7 +27,7 @@ class ArticleController
 
         flash()->success('Article created');
 
-        return redirect()->route('article.index');
+        return redirect()->route('fabric::article.index');
     }
 
     public function edit($uuid)
@@ -56,6 +56,6 @@ class ArticleController
 
         flash()->success('Article deleted');
 
-        return redirect()->route('article.index');
+        return redirect()->route('fabric::article.index');
     }
 }

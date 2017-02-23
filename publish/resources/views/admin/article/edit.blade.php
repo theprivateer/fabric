@@ -5,7 +5,7 @@
     <div class="page-header clearfix" style="margin-top: 0;">
         <h1 class="pull-left" style="margin-top: 0;">Edit Article</h1>
 
-        <a href="{{ route('article.create') }}" class="btn btn-default btn-lg pull-right">Create Article</a>
+        <a href="{{ route('fabric::article.create') }}" class="btn btn-default btn-lg pull-right">Create Article</a>
     </div>
 
     {!! Form::model($article) !!}

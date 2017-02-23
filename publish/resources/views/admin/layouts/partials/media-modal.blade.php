@@ -145,7 +145,7 @@
 
             if(hash == '#library-pane')
             {
-                getLibrary('{{ route('image.grid') }}');
+                getLibrary('{{ route('fabric::image.grid') }}');
             }
         })
 
@@ -246,7 +246,7 @@
         {
             e.preventDefault();
 
-            $.post("{{ route('image.tag') }}"
+            $.post("{{ route('fabric::image.tag') }}"
                 , $(this).serialize() )
                 .done(function( data ) {
 
@@ -275,7 +275,7 @@
                 var image = $('.content-image', this);
 
                 $(this).dropzone({
-                    url: '{{ route('image.create') }}',
+                    url: '{{ route('fabric::image.create') }}',
                     addRemoveLinks: true,
                     acceptedFiles: 'image/*',
                     maxFiles: 1,

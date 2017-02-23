@@ -32,26 +32,16 @@ Route::group(['namespace' => 'Privateer\Fabric\Http\Controllers', 'middleware' =
         // Admin
         Route::group(['namespace' => 'Admin', 'middleware' => config('fabric.auth-middleware')], function () {
 
-            if( ! Route::has('home'))
-            {
-                Route::get('/', [
-                    'uses'  => 'DashboardController@show',
-                    'as'    => 'home'
-                ]);
-            }
+            Route::get('/', [
+                'uses'  => 'DashboardController@show',
+                'as'    => 'fabric::home'
+            ]);
 
             Route::get('/home', function() {
-                return redirect()->route('home');
+                return redirect()->route('fabric::home');
             });
 
             Route::group(['namespace' => 'Sites'], function() {
-                /*
-                 * Site Index (multi-site)
-                 */
-                //Route::get('sites', [
-                //    'uses'  => 'SiteController@index',
-                //    'as'    => 'site.index'
-                //]);
 
                 Route::group(['prefix' => 'site'], function () {
                     /*
@@ -59,12 +49,12 @@ Route::group(['namespace' => 'Privateer\Fabric\Http\Controllers', 'middleware' =
                      */
                     Route::get('create', [
                         'uses'  => 'SiteController@create',
-                        'as'    => 'site.create'
+                        'as'    => 'fabric::site.create'
                     ]);
 
                     Route::post('create', [
                         'uses'  => 'SiteController@store',
-                        'as'    => 'site.create'
+                        'as'    => 'fabric::site.create'
                     ]);
 
                     /*
@@ -72,12 +62,12 @@ Route::group(['namespace' => 'Privateer\Fabric\Http\Controllers', 'middleware' =
                      */
                     Route::get('edit', [
                         'uses'  => 'SiteController@edit',
-                        'as'    => 'site.edit'
+                        'as'    => 'fabric::site.edit'
                     ]);
 
                     Route::post('edit', [
                         'uses'  => 'SiteController@update',
-                        'as'    => 'site.edit'
+                        'as'    => 'fabric::site.edit'
                     ]);
 
                     /*
@@ -85,32 +75,32 @@ Route::group(['namespace' => 'Privateer\Fabric\Http\Controllers', 'middleware' =
                      */
                     Route::get('domains', [
                         'uses'  => 'DomainController@index',
-                        'as'    => 'domain.index'
+                        'as'    => 'fabric::domain.index'
                     ]);
 
                     Route::get('domain/create', [
                         'uses'  => 'DomainController@create',
-                        'as'    => 'domain.create'
+                        'as'    => 'fabric::domain.create'
                     ]);
 
                     Route::post('domain/create', [
                         'uses'  => 'DomainController@store',
-                        'as'    => 'domain.create'
+                        'as'    => 'fabric::domain.create'
                     ]);
 
                     Route::get('domain/{uuid}/edit', [
                         'uses'  => 'DomainController@edit',
-                        'as'    => 'domain.edit'
+                        'as'    => 'fabric::domain.edit'
                     ]);
 
                     Route::post('domain/{uuid}/edit', [
                         'uses'  => 'DomainController@update',
-                        'as'    => 'domain.edit'
+                        'as'    => 'fabric::domain.edit'
                     ]);
 
                     Route::delete('domain', [
                         'uses'  => 'DomainController@destroy',
-                        'as'    => 'domain.destroy'
+                        'as'    => 'fabric::domain.destroy'
                     ]);
 
                     /*
@@ -118,32 +108,32 @@ Route::group(['namespace' => 'Privateer\Fabric\Http\Controllers', 'middleware' =
                      */
                     Route::get('redirects', [
                         'uses'  => 'RedirectController@index',
-                        'as'    => 'redirect.index'
+                        'as'    => 'fabric::redirect.index'
                     ]);
 
                     Route::get('redirect/create', [
                         'uses'  => 'RedirectController@create',
-                        'as'    => 'redirect.create'
+                        'as'    => 'fabric::redirect.create'
                     ]);
 
                     Route::post('redirect/create', [
                         'uses'  => 'RedirectController@store',
-                        'as'    => 'redirect.create'
+                        'as'    => 'fabric::redirect.create'
                     ]);
 
                     Route::get('redirect/{uuid}/edit', [
                         'uses'  => 'RedirectController@edit',
-                        'as'    => 'redirect.edit'
+                        'as'    => 'fabric::redirect.edit'
                     ]);
 
                     Route::post('redirect/{uuid}/edit', [
                         'uses'  => 'RedirectController@update',
-                        'as'    => 'redirect.edit'
+                        'as'    => 'fabric::redirect.edit'
                     ]);
 
                     Route::delete('redirect', [
                         'uses'  => 'RedirectController@destroy',
-                        'as'    => 'redirect.destroy'
+                        'as'    => 'fabric::redirect.destroy'
                     ]);
                 });
             });
@@ -154,7 +144,7 @@ Route::group(['namespace' => 'Privateer\Fabric\Http\Controllers', 'middleware' =
                  */
                 Route::get('pages', [
                     'uses'  => 'PageController@index',
-                    'as'    => 'page.index'
+                    'as'    => 'fabric::page.index'
                 ]);
 
                 Route::group(['prefix' => 'page'], function () {
@@ -163,12 +153,12 @@ Route::group(['namespace' => 'Privateer\Fabric\Http\Controllers', 'middleware' =
                      */
                     Route::get('create', [
                         'uses'  => 'PageController@create',
-                        'as'    => 'page.create'
+                        'as'    => 'fabric::page.create'
                     ]);
 
                     Route::post('create', [
                         'uses'  => 'PageController@store',
-                        'as'    => 'page.create'
+                        'as'    => 'fabric::page.create'
                     ]);
 
                     /*
@@ -176,17 +166,17 @@ Route::group(['namespace' => 'Privateer\Fabric\Http\Controllers', 'middleware' =
                      */
                     Route::get('{uuid}/edit', [
                         'uses'  => 'PageController@edit',
-                        'as'    => 'page.edit'
+                        'as'    => 'fabric::page.edit'
                     ]);
 
                     Route::post('{uuid}/edit', [
                         'uses'  => 'PageController@update',
-                        'as'    => 'page.edit'
+                        'as'    => 'fabric::page.edit'
                     ]);
 
                     Route::delete('/', [
                         'uses'  => 'PageController@destroy',
-                        'as'    => 'page.destroy'
+                        'as'    => 'fabric::page.destroy'
                     ]);
                 });
             });
@@ -197,7 +187,7 @@ Route::group(['namespace' => 'Privateer\Fabric\Http\Controllers', 'middleware' =
                  */
                 Route::get('articles', [
                     'uses'  => 'ArticleController@index',
-                    'as'    => 'article.index'
+                    'as'    => 'fabric::article.index'
                 ]);
 
                 Route::group(['prefix' => 'article'], function () {
@@ -206,12 +196,12 @@ Route::group(['namespace' => 'Privateer\Fabric\Http\Controllers', 'middleware' =
                      */
                     Route::get('create', [
                         'uses'  => 'ArticleController@create',
-                        'as'    => 'article.create'
+                        'as'    => 'fabric::article.create'
                     ]);
 
                     Route::post('create', [
                         'uses'  => 'ArticleController@store',
-                        'as'    => 'article.create'
+                        'as'    => 'fabric::article.create'
                     ]);
 
                     /*
@@ -219,17 +209,17 @@ Route::group(['namespace' => 'Privateer\Fabric\Http\Controllers', 'middleware' =
                      */
                     Route::get('{uuid}/edit', [
                         'uses'  => 'ArticleController@edit',
-                        'as'    => 'article.edit'
+                        'as'    => 'fabric::article.edit'
                     ]);
 
                     Route::post('{uuid}/edit', [
                         'uses'  => 'ArticleController@update',
-                        'as'    => 'article.edit'
+                        'as'    => 'fabric::article.edit'
                     ]);
 
                     Route::delete('/', [
                         'uses'  => 'ArticleController@destroy',
-                        'as'    => 'article.destroy'
+                        'as'    => 'fabric::article.destroy'
                     ]);
                 });
             });
@@ -238,7 +228,7 @@ Route::group(['namespace' => 'Privateer\Fabric\Http\Controllers', 'middleware' =
 
                 Route::get('indices', [
                     'uses'  => 'IndexController@index',
-                    'as'    => 'index.index'
+                    'as'    => 'fabric::index.index'
                 ]);
 
                 Route::group(['prefix' => 'index'], function () {
@@ -247,12 +237,12 @@ Route::group(['namespace' => 'Privateer\Fabric\Http\Controllers', 'middleware' =
                      */
                     Route::get('create', [
                         'uses'  => 'IndexController@create',
-                        'as'    => 'index.create'
+                        'as'    => 'fabric::index.create'
                     ]);
 
                     Route::post('create', [
                         'uses'  => 'IndexController@store',
-                        'as'    => 'index.create'
+                        'as'    => 'fabric::index.create'
                     ]);
 
                     /*
@@ -260,17 +250,17 @@ Route::group(['namespace' => 'Privateer\Fabric\Http\Controllers', 'middleware' =
                      */
                     Route::get('{uuid}/edit', [
                         'uses'  => 'IndexController@edit',
-                        'as'    => 'index.edit'
+                        'as'    => 'fabric::index.edit'
                     ]);
 
                     Route::post('{uuid}/edit', [
                         'uses'  => 'IndexController@update',
-                        'as'    => 'index.edit'
+                        'as'    => 'fabric::index.edit'
                     ]);
 
                     Route::delete('/', [
                         'uses'  => 'IndexController@destroy',
-                        'as'    => 'index.destroy'
+                        'as'    => 'fabric::index.destroy'
                     ]);
                 });
             });
@@ -279,17 +269,17 @@ Route::group(['namespace' => 'Privateer\Fabric\Http\Controllers', 'middleware' =
 
                 Route::post('upload/image', [
                     'uses'  => 'ImageController@store',
-                    'as'    => 'image.create'
+                    'as'    => 'fabric::image.create'
                 ]);
 
                 Route::get('uploads/grid', [
                     'uses'  => 'ImageController@grid',
-                    'as'     => 'image.grid'
+                    'as'     => 'fabric::image.grid'
                 ]);
 
                 Route::post('image/tag', [
                     'uses'  => 'ImageController@generateTag',
-                    'as'     => 'image.tag'
+                    'as'     => 'fabric::image.tag'
                 ]);
             });
 
@@ -302,7 +292,7 @@ Route::group(['namespace' => 'Privateer\Fabric\Http\Controllers', 'middleware' =
      */
     Route::get('image/{path}', [
         'uses' => 'ImageController@show',
-        'as'   => 'image.src'
+        'as'   => 'fabric::image.src'
     ])->where('path', '.*');
 
     if( ! config('fabric.backend-only', false)) Route::get('{path}', 'PageController@show')->where('path', '.*');

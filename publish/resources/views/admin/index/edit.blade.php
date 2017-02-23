@@ -4,7 +4,7 @@
     <div class="page-header clearfix" style="margin-top: 0;">
         <h1 class="pull-left" style="margin-top: 0;">Edit Index <small>{{ $index->name }}</small></h1>
 
-        <a href="{{ route('index.create') }}" class="btn btn-default btn-lg pull-right">Create Index</a>
+        <a href="{{ route('fabric::index.create') }}" class="btn btn-default btn-lg pull-right">Create Index</a>
     </div>
 
     {!! Form::model($index) !!}

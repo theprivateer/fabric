@@ -58,7 +58,7 @@ class PageController extends Controller
 
         flash()->success('Page created');
 
-        return redirect()->route('page.index');
+        return redirect()->route('fabric::page.index');
     }
 
     public function edit($uuid)
@@ -89,6 +89,6 @@ class PageController extends Controller
 
         flash()->success('Page deleted');
 
-        return redirect()->route('page.index');
+        return redirect()->route('fabric::page.index');
     }
 }

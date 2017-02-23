@@ -52,7 +52,6 @@
 
         <div class="panel-footer">
             {!! Form::submit('Save Changes', ['class' => 'btn btn-primary']) !!}
-            {!! link_to_route('home', 'Cancel', null, ['class' => 'btn btn-default']) !!}
         </div>
     </div>
     {!! Form::close() !!}

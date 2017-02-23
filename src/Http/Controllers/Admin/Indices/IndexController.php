@@ -27,7 +27,7 @@ class IndexController extends Controller
 
         flash()->success('Index created');
 
-        return redirect()->route('index.edit', $index->uuid);
+        return redirect()->route('fabric::index.edit', $index->uuid);
     }
 
     public function edit($uuid)
@@ -68,6 +68,6 @@ class IndexController extends Controller
 
         flash()->success('Index deleted');
 
-        return redirect()->route('index.index');
+        return redirect()->route('fabric::index.index');
     }
 }

@@ -4,7 +4,7 @@
     <div class="page-header clearfix" style="margin-top: 0;">
         <h1 class="pull-left" style="margin-top: 0;">Create Index</h1>
 
-        <a href="{{ route('index.index') }}" class="btn btn-default btn-lg pull-right">Cancel</a>
+        <a href="{{ route('fabric::index.index') }}" class="btn btn-default btn-lg pull-right">Cancel</a>
     </div>
 
     {!! Form::open() !!}

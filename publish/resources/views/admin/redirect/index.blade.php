@@ -7,7 +7,7 @@
 
     <div class="panel panel-default has-tabs">
         <div class="panel-body">
-            <a href="{{ route('redirect.create') }}" class="btn btn-primary">Add Redirect</a>
+            <a href="{{ route('fabric::redirect.create') }}" class="btn btn-primary">Add Redirect</a>
         </div>
 
         <table class="table table-striped table-panel">
@@ -25,10 +25,10 @@
                         <td>/{{ ltrim($redirect->old_url, '/') }}</td>
                         <td>{{ $redirect->new_url }}</td>
                         <td class="btn-column">
-                            <a href="{{ route('redirect.edit', $redirect->uuid) }}" class="btn btn-default btn-sm">Edit</a>
+                            <a href="{{ route('fabric::redirect.edit', $redirect->uuid) }}" class="btn btn-default btn-sm">Edit</a>
                         </td>
                         <td class="btn-column">
-                            {!! Form::open(['route' => 'redirect.destroy', 'method' => 'DELETE', 'role' => 'delete-redirect']) !!}
+                            {!! Form::open(['route' => 'fabric::redirect.destroy', 'method' => 'DELETE', 'role' => 'delete-redirect']) !!}
                             {!! Form::hidden('uuid', $redirect->uuid) !!}
                             {!! Form::submit('Delete', ['class' => 'btn btn-default btn-sm']) !!}
                             {!! Form::close() !!}

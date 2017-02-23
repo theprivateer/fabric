@@ -37,7 +37,7 @@
                 </button>
 
                 <!-- Branding Image -->
-                <a class="navbar-brand" href="{{ route('home') }}">
+                <a class="navbar-brand" href="{{ route('fabric::home') }}">
                     {{ site('name') }}
                 </a>
             </div>
@@ -57,8 +57,7 @@
                         </a>
 
                         <ul class="dropdown-menu" role="menu">
-                            {{--<li><a href="#">Edit User Profile</a></li>--}}
-                            {{--<li class="divider"></li>--}}
+
                             <li>
                                 <a href="{{ url('/logout') }}"
                                    onclick="event.preventDefault();
@@ -90,9 +89,9 @@
                         <span class="caret"></span>
                     </a>
                     <ul class="dropdown-menu">
-                        <li><a href="{{ route('site.edit') }}">Settings</a></li>
-                        <li><a href="{{ route('domain.index') }}">Domains</a></li>
-                        <li><a href="{{ route('redirect.index') }}">Redirects</a></li>
+                        <li><a href="{{ route('fabric::site.edit') }}">Settings</a></li>
+                        <li><a href="{{ route('fabric::domain.index') }}">Domains</a></li>
+                        <li><a href="{{ route('fabric::redirect.index') }}">Redirects</a></li>
                     </ul>
                 </li>
                 <li class="dropdown">
@@ -101,8 +100,8 @@
                         <span class="caret"></span>
                     </a>
                     <ul class="dropdown-menu">
-                        <li><a href="{{ route('page.index') }}">All Pages</a></li>
-                        <li><a href="{{ route('page.create') }}">Create Page</a></li>
+                        <li><a href="{{ route('fabric::page.index') }}">All Pages</a></li>
+                        <li><a href="{{ route('fabric::page.create') }}">Create Page</a></li>
                     </ul>
                 </li>
                 <li class="dropdown">
@@ -111,22 +110,15 @@
                         <span class="caret"></span>
                     </a>
                     <ul class="dropdown-menu">
-                        <li><a href="{{ route('article.index') }}">All Articles</a></li>
-                        <li><a href="{{ route('article.create') }}">Create Article</a></li>
+                        <li><a href="{{ route('fabric::article.index') }}">All Articles</a></li>
+                        <li><a href="{{ route('fabric::article.create') }}">Create Article</a></li>
                     </ul>
                 </li>
                 <li>
-                    <a href="{{ route('index.index') }}">
+                    <a href="{{ route('fabric::index.index') }}">
                         Indices
                     </a>
                 </li>
-                {{--<li>--}}
-                    {{--<a href="/leads">--}}
-                        {{--Uploads--}}
-                    {{--</a>--}}
-                {{--</li>--}}
-
-
             </ul>
         </div>
 

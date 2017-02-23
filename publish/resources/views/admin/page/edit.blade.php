@@ -5,7 +5,7 @@
     <div class="page-header clearfix" style="margin-top: 0;">
         <h1 class="pull-left" style="margin-top: 0;">Edit Page</h1>
 
-        <a href="{{ route('page.create') }}" class="btn btn-default btn-lg pull-right">Create Page</a>
+        <a href="{{ route('fabric::page.create') }}" class="btn btn-default btn-lg pull-right">Create Page</a>
     </div>
 
     {!! Form::model($page) !!}

@@ -24,7 +24,7 @@ class DomainController extends Controller
 
         flash()->success('Domain added');
 
-        return redirect()->route('domain.index');
+        return redirect()->route('fabric::domain.index');
     }
 
 
@@ -56,6 +56,6 @@ class DomainController extends Controller
 
         flash()->success('Domain deleted');
 
-        return redirect()->route('domain.index');
+        return redirect()->route('fabric::domain.index');
     }
 }

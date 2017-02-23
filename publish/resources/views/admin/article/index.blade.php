@@ -4,7 +4,7 @@
     <div class="page-header clearfix" style="margin-top: 0;">
         <h1 class="pull-left" style="margin-top: 0;">Articles</h1>
 
-        <a href="{{ route('article.create') }}" class="btn btn-default btn-lg pull-right">Create Article</a>
+        <a href="{{ route('fabric::article.create') }}" class="btn btn-default btn-lg pull-right">Create Article</a>
     </div>
 
     <div class="panel panel-default">
@@ -23,7 +23,7 @@
                 @foreach($articles as $article)
                     <tr>
                         <td>
-                            {!! link_to_route('article.edit', $article->name, $article->uuid) !!}
+                            {!! link_to_route('fabric::article.edit', $article->name, $article->uuid) !!}
                             @if($article->draft)
                                 <span class="label label-info">DRAFT</span>
                             @endif
@@ -33,7 +33,7 @@
                             {{ (! empty($article->publish_at)) ? $article->publish_at->format('j F Y') : null }}
                         </td>
                         <td>
-                            <a href="{{ route('article.edit', $article->uuid) }}" class="btn btn-default btn-sm">Edit</a>
+                            <a href="{{ route('fabric::article.edit', $article->uuid) }}" class="btn btn-default btn-sm">Edit</a>
                         </td>
                         <td>
                             {!! Form::open(['route' => 'article.destroy', 'method' => 'DELETE', 'role' => 'delete-article']) !!}

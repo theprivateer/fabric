@@ -4,7 +4,7 @@
     <div class="page-header clearfix" style="margin-top: 0;">
         <h1 class="pull-left" style="margin-top: 0;">Pages</h1>
 
-        <a href="{{ route('page.create') }}" class="btn btn-default btn-lg pull-right">Create Page</a>
+        <a href="{{ route('fabric::page.create') }}" class="btn btn-default btn-lg pull-right">Create Page</a>
     </div>
 
     <div class="panel panel-default">
@@ -22,14 +22,14 @@
                 @foreach(site()->pages as $page)
                     <tr>
                         <td>
-                            {!! link_to_route('page.edit', $page->name, $page->uuid) !!}
+                            {!! link_to_route('fabric::page.edit', $page->name, $page->uuid) !!}
                         </td>
                         <td><a href="{{ url( $page->url ) }}" target="_blank">{{ $page->url }}</a></td>
                         <td>
-                            <a href="{{ route('page.edit', $page->uuid) }}" class="btn btn-default btn-sm">Edit</a>
+                            <a href="{{ route('fabric::page.edit', $page->uuid) }}" class="btn btn-default btn-sm">Edit</a>
                         </td>
                         <td>
-                            {!! Form::open(['route' => 'page.destroy', 'method' => 'DELETE', 'role' => 'delete-page']) !!}
+                            {!! Form::open(['route' => 'fabric::page.destroy', 'method' => 'DELETE', 'role' => 'delete-page']) !!}
                             {!! Form::hidden('uuid', $page->uuid) !!}
                             {!! Form::submit('Delete', ['class' => 'btn btn-default btn-sm']) !!}
                             {!! Form::close() !!}

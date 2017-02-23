@@ -24,7 +24,7 @@ class RedirectController extends Controller
 
         flash()->success('Redirect created');
 
-        return redirect()->route('redirect.index');
+        return redirect()->route('fabric::redirect.index');
     }
 
     public function edit($uuid)
@@ -55,7 +55,7 @@ class RedirectController extends Controller
 
         flash()->success('Redirect deleted');
 
-        return redirect()->route('redirect.index');
+        return redirect()->route('fabric::redirect.index');
     }
 
 }

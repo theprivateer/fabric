@@ -4,7 +4,7 @@
     <div class="page-header clearfix" style="margin-top: 0;">
         <h1 class="pull-left" style="margin-top: 0;">Indices</h1>
 
-        <a href="{{ route('index.create') }}" class="btn btn-default btn-lg pull-right">Create Index</a>
+        <a href="{{ route('fabric::index.create') }}" class="btn btn-default btn-lg pull-right">Create Index</a>
     </div>
 
     <div class="panel panel-default">
@@ -24,10 +24,10 @@
                         <td>{{ $index->name }}</td>
                         <td>{{ $index->short_name }}</td>
                         <td>
-                            <a href="{{ route('index.edit', $index->uuid) }}" class="btn btn-default btn-sm">Edit</a>
+                            <a href="{{ route('fabric::index.edit', $index->uuid) }}" class="btn btn-default btn-sm">Edit</a>
                         </td>
                         <td>
-                            {!! Form::open(['route' => 'index.destroy', 'method' => 'DELETE', 'role' => 'delete-index']) !!}
+                            {!! Form::open(['route' => 'fabric::index.destroy', 'method' => 'DELETE', 'role' => 'delete-index']) !!}
                             {!! Form::hidden('uuid', $index->uuid) !!}
                             {!! Form::submit('Delete', ['class' => 'btn btn-default btn-sm']) !!}
                             {!! Form::close() !!}
