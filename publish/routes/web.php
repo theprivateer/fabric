@@ -7,7 +7,7 @@ Route::group(['namespace' => 'Privateer\Fabric\Http\Controllers', 'middleware' =
         /*
         * Homepage
         */
-        Route::get('/', 'PageController@index');
+        if(config('fabric.fabric-homepage')) Route::get('/', 'PageController@index');
 
         /*
          * Sitemap

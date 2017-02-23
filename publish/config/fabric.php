@@ -8,6 +8,8 @@ return [
 
     'backend-only'  => false,
 
+    'fabric-homepage'  => true,
+
     'site' => \Privateer\Fabric\Sites\Site::class,
 
     'allow-null-site' => false,
