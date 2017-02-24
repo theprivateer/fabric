@@ -36,7 +36,7 @@
                             <a href="{{ route('fabric::article.edit', $article->uuid) }}" class="btn btn-default btn-sm">Edit</a>
                         </td>
                         <td>
-                            {!! Form::open(['route' => 'article.destroy', 'method' => 'DELETE', 'role' => 'delete-article']) !!}
+                            {!! Form::open(['route' => 'fabric::article.destroy', 'method' => 'DELETE', 'role' => 'delete-article']) !!}
                             {!! Form::hidden('uuid', $article->uuid) !!}
                             {!! Form::submit('Delete', ['class' => 'btn btn-default btn-sm']) !!}
                             {!! Form::close() !!}
