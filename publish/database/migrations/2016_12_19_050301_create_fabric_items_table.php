@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreatePagesTable extends Migration
+class CreateFabricItemsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,13 +13,12 @@ class CreatePagesTable extends Migration
      */
     public function up()
     {
-        Schema::create(config('fabric.database-prefix') . 'pages', function (Blueprint $table) {
+        Schema::create(config('fabric.database-prefix') . 'items', function (Blueprint $table) {
             $table->increments('id');
             $table->uuid('uuid');
-            $table->unsignedInteger('site_id');
-            $table->string('name');
-            $table->string('url');
-            $table->string('template')->default('page');
+            $table->unsignedInteger('index_id');
+            $table->morphs('model');
+            $table->integer('sort')->default(0);
             $table->timestamps();
         });
     }
@@ -31,6 +30,6 @@ class CreatePagesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists(config('fabric.database-prefix') . 'pages');
+        Schema::dropIfExists(config('fabric.database-prefix') . 'items');
     }
 }

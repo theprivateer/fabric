@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateItemsTable extends Migration
+class CreateFabricContentsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,14 @@ class CreateItemsTable extends Migration
      */
     public function up()
     {
-        Schema::create(config('fabric.database-prefix') . 'items', function (Blueprint $table) {
+        Schema::create(config('fabric.database-prefix') . 'contents', function (Blueprint $table) {
             $table->increments('id');
             $table->uuid('uuid');
-            $table->unsignedInteger('index_id');
-            $table->morphs('model');
-            $table->integer('sort')->default(0);
+            $table->morphs('parent');
+            $table->string('title')->nullable();
+            $table->text('excerpt')->nullable();
+            $table->text('body')->nullable();
+            $table->unsignedInteger('image_id')->default(0);
             $table->timestamps();
         });
     }
@@ -30,6 +32,6 @@ class CreateItemsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists(config('fabric.database-prefix') . 'items');
+        Schema::dropIfExists(config('fabric.database-prefix') . 'contents');
     }
 }

@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateDomainsTable extends Migration
+class CreateFabricSitesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,13 @@ class CreateDomainsTable extends Migration
      */
     public function up()
     {
-        Schema::create(config('fabric.database-prefix') . 'domains', function (Blueprint $table) {
+        Schema::create(config('fabric.database-prefix') . 'sites', function (Blueprint $table) {
             $table->increments('id');
             $table->uuid('uuid');
-            $table->unsignedInteger('site_id');
-            $table->string('domain')->unique();
-            $table->boolean('locked')->default(false);
+            $table->string('name');
+            $table->string('theme')->nullable();
+            $table->unsignedInteger('homepage_id')->nullable();
+            $table->unsignedInteger('feed_page_id')->nullable();
             $table->timestamps();
         });
     }
@@ -30,6 +31,6 @@ class CreateDomainsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists(config('fabric.database-prefix') . 'domains');
+        Schema::dropIfExists(config('fabric.database-prefix') . 'sites');
     }
 }

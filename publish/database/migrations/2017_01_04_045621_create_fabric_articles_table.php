@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateIndicesTable extends Migration
+class CreateFabricArticlesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,16 @@ class CreateIndicesTable extends Migration
      */
     public function up()
     {
-        Schema::create(config('fabric.database-prefix') . 'indices', function (Blueprint $table) {
+        Schema::create(config('fabric.database-prefix') . 'articles', function (Blueprint $table) {
             $table->increments('id');
             $table->uuid('uuid');
             $table->unsignedInteger('site_id');
+            $table->unsignedInteger('user_id');
             $table->string('name');
-            $table->string('short_name');
+            $table->string('url');
+            $table->string('template')->default('article');
+            $table->boolean('draft')->default(false);
+            $table->dateTime('publish_at')->nullable();
             $table->timestamps();
         });
     }
@@ -30,6 +34,6 @@ class CreateIndicesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists(config('fabric.database-prefix') . 'indices');
+        Schema::dropIfExists(config('fabric.database-prefix') . 'articles');
     }
 }
