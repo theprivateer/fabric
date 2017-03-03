@@ -2,6 +2,7 @@
 
 namespace Privateer\Fabric\Http\Controllers\Admin\Uploads;
 
+use Privateer\Fabric\Sites\Site;
 use Privateer\Fabric\Uploads\Image;
 use Illuminate\Http\Request;
 use Privateer\Fabric\Http\Controllers\Controller;
@@ -17,6 +18,14 @@ class ImageController extends Controller
 
             $upload = $request->file('file');
 
+            if($site_uuid = $request->get('site_uuid'))
+            {
+                $site = Site::findByUuid($site_uuid);
+            } else
+            {
+                $site = site();
+            }
+
             $image = new Image;
 
             /*
@@ -26,11 +35,11 @@ class ImageController extends Controller
              * $image->file_name = $upload->store('uploads/' . site('uuid');
              */
 
-            $image->file_name = $this->store_upload($upload, config('fabric.upload-prefix') . '/' . site('uuid') . '/' . date('Ymd'));
+            $image->file_name = $this->store_upload($upload, config('fabric.upload-prefix') . '/' . $site->uuid . '/' . date('Ymd'));
             $image->original_name = $upload->getClientOriginalName();
             $image->file_type = $upload->getClientMimeType();
 
-            site()->images()->save($image);
+            $site->images()->save($image);
 
             if($request->has('preview_parameters'))
             {
@@ -66,9 +75,11 @@ class ImageController extends Controller
         return $file_name;
     }
 
-    public function grid()
+    public function grid($site_id = null)
     {
-        $images = Image::where('site_id', site('id'))->latest()->paginate(18);
+        if(empty($site_id)) $site_id = site('id');
+
+        $images = Image::where('site_id', $site_id)->latest()->paginate(18);
 
         return response()->json(View::make('fabric::admin.image.grid', compact('images'))->render());
     }
