@@ -24,7 +24,7 @@ class FabricServiceProvider extends ServiceProvider
             __DIR__ . '/../../publish/public' => public_path('vendor/fabric'),
         ], 'public');
 
-        $this->loadMigrationsFrom( __DIR__ . '/../../publish/database/migrations');
+        if(env('LOAD_FABRIC_MIGRATIONS', true)) $this->loadMigrationsFrom( __DIR__ . '/../../publish/database/migrations');
 
         $this->publishes([
             __DIR__ . '/../../publish/database/migrations/' => database_path('migrations')
