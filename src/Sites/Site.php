@@ -36,6 +36,11 @@ class Site extends Model
         return $this->hasMany(Page::class);
     }
 
+    public function homepage()
+    {
+        return $this->belongsTo(Page::class);
+    }
+
     public function indices()
     {
         return $this->hasMany(Index::class);
