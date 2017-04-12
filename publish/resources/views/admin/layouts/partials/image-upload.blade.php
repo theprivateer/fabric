@@ -6,6 +6,6 @@
 
         {!! Form::hidden($field, $model->featuredImageId()) !!}
     @else
-        {!! Form::hidden($field) !!}
+        {!! Form::hidden($field, '0') !!}
     @endif
 </div>

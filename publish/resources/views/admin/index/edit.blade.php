@@ -27,6 +27,10 @@
 
     <div class="row">
         <div class="col-md-5">
+            <p>
+                <button class="btn btn-default" role="external-link">Add an External Link</button>
+            </p>
+
             @foreach($index->availableItems() as $key => $models)
 
             {!! Form::open(['role' => 'source-form', 'data-class' => $key, 'data-class-basename' => class_basename($key)]) !!}
@@ -68,20 +72,36 @@
                     <tbody id="target-panel">
                         @foreach($index->items as $item)
                             @if($item->model)
-                        <tr id="item-{{ $item->model->uuid }}">
-                            <td class="sort-handle">
-                                <i class="icon-arrows"></i>
-                                {!! Form::hidden('items[' . $item->model->uuid . '][sort]', $item->sort, ['role' => 'sort-order']) !!}
-                                {!! Form::hidden('items[' . $item->model->uuid . '][model_type]', $item->model_type) !!}
-                                {!! Form::hidden('items[' . $item->model->uuid . '][model_id]', $item->model_id) !!}
-                            </td>
-                            <td class="btn-column text-muted"><small>{{ class_basename($item->model_type) }}</small></td>
-                            <td>{{ $item->model->name }}</td>
-                            <td class="btn-column">
-                                <button class="btn btn-default btn-sm" role="remove-item" data-uuid="{{ $item->model->uuid }}">Remove</button>
-                            </td>
-                        </tr>
-                        @endif
+                            <tr id="item-{{ $item->model->uuid }}">
+                                <td class="sort-handle">
+                                    <i class="icon-arrows"></i>
+                                    {!! Form::hidden('items[' . $item->model->uuid . '][sort]', $item->sort, ['role' => 'sort-order']) !!}
+                                    {!! Form::hidden('items[' . $item->model->uuid . '][model_type]', $item->model_type) !!}
+                                    {!! Form::hidden('items[' . $item->model->uuid . '][model_id]', $item->model_id) !!}
+                                </td>
+                                <td class="btn-column text-muted"><small>{{ class_basename($item->model_type) }}</small></td>
+                                <td>{{ $item->model->name }}</td>
+                                <td class="btn-column">
+                                    <button class="btn btn-default btn-sm" role="remove-item" data-uuid="{{ $item->model->uuid }}">Remove</button>
+                                </td>
+                            </tr>
+                            @else
+                            <tr id="item-{{ $item->uuid }}">
+                                <td class="sort-handle">
+                                    <i class="icon-arrows"></i>
+                                    {!! Form::hidden('items[' . $item->uuid . '][sort]', $item->sort, ['role' => 'sort-order']) !!}
+                                </td>
+                                <td class="btn-column text-muted"><small>External</small></td>
+                                <td>
+                                    <input name="items[{{ $item->uuid }}][label]" type="text" class="form-control" placeholder="Label" style="margin-bottom: 5px;" value="{{ $item->label }}">
+                                    <input name="items[{{ $item->uuid }}][external_link]" type="text" class="form-control" placeholder="URL" style="margin-bottom: 5px;" value="{{ $item->external_link }}">
+                                    <input name="items[{{ $item->uuid }}][custom]" type="text" class="form-control" placeholder="Custom Field" value="{{ $item->custom }}">
+                                </td>
+                                <td class="btn-column">
+                                    <button class="btn btn-default btn-sm" role="remove-item" data-uuid="{{ $item->uuid }}">Remove</button>
+                                </td>
+                            </tr>
+                            @endif
                         @endforeach
                     </tbody>
                 </table>
@@ -132,6 +152,31 @@
             doSorting();
         });
 
+        $('[role="external-link"]').on('click', function(e) {
+            e.preventDefault();
+
+            var source   = $("#external-link-row").html();
+            var template = Handlebars.compile(source);
+            var html    = template({
+                uuid: generateUUID(),
+            });
+
+            $('#target-panel').append(html);
+
+            initSorting();
+            doSorting();
+        });
+
+        function generateUUID() {
+            var d = new Date().getTime();
+            var uuid = 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function(c) {
+                var r = (d + Math.random()*16)%16 | 0;
+                d = Math.floor(d/16);
+                return (c=='x' ? r : (r&0x3|0x8)).toString(16);
+            });
+            return uuid;
+        }
+
 
         function initSorting()
         {
@@ -181,4 +226,5 @@
     </script>
 
     @include('fabric::admin.index.partials.item-row')
+    @include('fabric::admin.index.partials.external-link-row')
 @endsection

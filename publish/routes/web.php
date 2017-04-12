@@ -162,7 +162,7 @@ Route::group(['namespace' => 'Privateer\Fabric\Http\Controllers', 'middleware' =
                     ]);
 
                     /*
-                     * General Settings
+                     * General Editing
                      */
                     Route::get('{uuid}/edit', [
                         'uses'  => 'PageController@edit',
@@ -173,6 +173,12 @@ Route::group(['namespace' => 'Privateer\Fabric\Http\Controllers', 'middleware' =
                         'uses'  => 'PageController@update',
                         'as'    => 'fabric::page.edit'
                     ]);
+
+                    Route::get('{uuid}/slideshow', [
+                        'uses'  => 'SlideshowController@edit',
+                        'as'    => 'fabric::page.slideshow'
+                    ]);
+
 
                     Route::delete('/', [
                         'uses'  => 'PageController@destroy',

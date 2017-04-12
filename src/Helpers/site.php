@@ -82,7 +82,6 @@ if( ! function_exists('nav'))
             {
                 if($item->model)
                 {
-
                     if(class_basename($item->model_type) == 'Index')
                     {
                         $nav->submenu(
@@ -95,6 +94,9 @@ if( ! function_exists('nav'))
                     {
                         $nav->add(\Spatie\Menu\Laravel\Link::to(url($item->model->url), $item->model->name));
                     }
+                } else
+                {
+                    $nav->add(\Spatie\Menu\Laravel\Link::to($item->external_link, $item->label));
                 }
             }
 
@@ -103,6 +105,23 @@ if( ! function_exists('nav'))
         } catch( \Exception $e)
         {
 
+        }
+    }
+}
+
+if( ! function_exists('get_nav'))
+{
+    function get_nav($short_name)
+    {
+        try
+        {
+            $index = \Privateer\Fabric\Sites\Navigation\Index::where('short_name', $short_name)->where('site_id', site('id'))->firstOrFail();
+
+            return $index;
+
+        } catch( \Exception $e)
+        {
+            return new \Privateer\Fabric\Sites\Navigation\Index();
         }
     }
 }

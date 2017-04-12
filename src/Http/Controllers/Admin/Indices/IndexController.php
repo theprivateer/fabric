@@ -45,12 +45,15 @@ class IndexController extends Controller
 
         $index->save();
 
+        $index->items()->delete();
+
         if($request->has('items'))
         {
-            $index->items()->delete();
-
             foreach($request->get('items') as $item)
             {
+                $item['model_type'] = ( ! empty($item['model_type'])) ? $item['model_type'] : '';
+                $item['model_id'] = ( ! empty($item['model_id'])) ? $item['model_id'] : 0;
+
                 $index->items()->save(new Item($item));
             }
         }

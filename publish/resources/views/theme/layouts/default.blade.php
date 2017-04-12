@@ -93,7 +93,15 @@
 
                     <div class="col-md-4">
                         <p>&copy; {{ site('name') }} {{ date('Y') }}</p>
-                        <p>Social Links</p>
+
+                        <ul>
+                            @foreach(get_nav('social')->items as $item)
+                            <li>
+                                <a href="{{ $item->external_link }}" target="_blank">{{ $item->label }}</a>
+
+                            </li>
+                            @endforeach
+                        </ul>
                     </div>
                 </div>
 

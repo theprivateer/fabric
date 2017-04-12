@@ -2,14 +2,10 @@
 
 @section('content')
 
-    <div class="page-header clearfix" style="margin-top: 0;">
-        <h1 class="pull-left" style="margin-top: 0;">Edit Page</h1>
-
-        <a href="{{ route('fabric::page.create') }}" class="btn btn-default btn-lg pull-right">Create Page</a>
-    </div>
+    @include('fabric::admin.page.partials.tabs', ['tab' => 'edit'])
 
     {!! Form::model($page) !!}
-    <div class="panel panel-default">
+    <div class="panel panel-default has-tabs">
         <div class="panel-body">
             <!-- Name Form Input -->
             <div class="form-group">
